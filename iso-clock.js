@@ -34,9 +34,8 @@ function make_iso_clock()
 	const clock_container = MAIN.panel._centerBox.get_child_at_index(0).get_child_at_index(0).get_child_at_index(0);
 	const clock_index = 1;		// TODO: find a better way instead of hard-coding this
 	const orig_clock = clock_container.get_child_at_index(clock_index);
-	const iso_clock = new ST.label();
+	const iso_clock = new ST.label({ y_align: ACTOR_ALIGN.center });
 	iso_clock.add_style_class_name('iso-clock');
-	iso_clock.set_y_align(ACTOR_ALIGN.center);
 
 	let $ = {};
 	let timer;
