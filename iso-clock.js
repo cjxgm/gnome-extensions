@@ -8,24 +8,20 @@ const MAIN = imports.ui.main;			// to access/modify panel
 const MAINLOOP = imports.mainloop;		// for adding timers
 
 // for alignment constants
-function _import_actor_align()
-{
+const ACTOR_ALIGN = (function() {
 	let $ = {};
 	let _ = imports.gi.Clutter.ActorAlign;
 	$.center = _.CENTER;
 	return $;
-}
-const ACTOR_ALIGN = _import_actor_align();
+})();
 
 // for creating stages
-function _import_st()
-{
+const ST = (function() {
 	let $ = {};
 	let _ = imports.gi.St;
 	$.label = _.Label;
 	return $;
-}
-const ST = _import_st();
+})();
 
 
 ///////////////////////////////////////////////////////////////////////////
