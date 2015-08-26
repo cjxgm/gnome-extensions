@@ -43,7 +43,7 @@ function make_iso_clock()
 	let update_clock = function() {
 		// FIXME: remove camelcase
 		let now = new Date();
-		let weekday = "⊗①②③④⑤⊙".charAt(now.getDay());
+		let weekday = "⊗①②③④⑤⊙"[now.getDay()];
 		iso_clock.text = now.toLocaleFormat(weekday + " %Y-%m-%d  %H:%M:%S");
 		return true;
 	}
