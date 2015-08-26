@@ -1,6 +1,6 @@
 {
 	"name": "ISO Clock",
-	"description": "Replaces the default clock with the ISO-8601 comforming one",
+	"description": "Replaces the default clock with the ISO-8601 comforming one.",
 	"uuid": "iso-clock@giumo.x.clanjor-cjprods.org",
 	"shell-version": [
 		"3.16"
