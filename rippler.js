@@ -24,7 +24,7 @@ const MAIN = (function() {
 const tween = imports.ui.tweener.addTween;
 
 
-function make()
+function make(max_ripples)
 {
 	let get_css_height = function(actor) {
 		return actor.peek_theme_node().get_height();
@@ -65,10 +65,37 @@ function make()
 		});
 	}
 
-	let ripple = function() {
-		make_ripple(MAIN.ui, 'capslip-on', 0.5, 1, function() {});
+	let lerp = function(x, xf, xt, df, dt) {
+		return (x-xf) / (xt-xf) * (dt-df) + df;
 	}
 
-	return ripple;
+	let rippling;
+	let ripple_request;
+
+	let do_ripple = function() {
+		if (ripple_request) {
+			rippling = {
+				style: ripple_request,
+				i: 0,
+			};
+			ripple_request = undefined;
+		}
+		if (rippling.i++ == max_ripples) {
+			rippling = undefined;
+			return;
+		}
+
+		let scale_init = lerp(rippling.i, 1, max_ripples, 0.30, 0.05);
+		let scale_fini = lerp(rippling.i, 1, max_ripples, 1.00, 0.50);
+
+		make_ripple(MAIN.ui, rippling.style, scale_init, scale_fini, do_ripple);
+	}
+
+	let request_ripple = function(style) {
+		ripple_request = style;
+		if (!rippling) do_ripple();
+	}
+
+	return request_ripple;
 }
 
