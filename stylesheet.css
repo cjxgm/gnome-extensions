@@ -11,6 +11,7 @@
 }
 .capslip-indicator {
   width: 14px;
-  height: 42px;
+  height: 28px;
+  border-radius: 0 14px 14px 0;
   background-color: #88ff11;
 }
