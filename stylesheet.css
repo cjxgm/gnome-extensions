@@ -1,7 +1,7 @@
 .capslip-ripple {
-  width: 100px;
-  height: 200px;
-  border-radius: 0 100px 100px 0;
+  width: 200px;
+  height: 400px;
+  border-radius: 0 200px 200px 0;
 }
 .capslip-on {
   background-color: #ff8800;
