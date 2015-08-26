@@ -36,7 +36,6 @@ function make(max_ripples)
 			pivot_point: new CLUTTER.point({ x: 0.0, y: 0.5 }),
 			x: 0,
 			y: 0, 	// will be calculated later
-			opacity: 128,
 			scale_x: scale_init,
 			scale_y: scale_init,
 		});
@@ -54,7 +53,7 @@ function make(max_ripples)
 			transition: 'linear',
 			onUpdate: function() {
 				ripple.opacity = ripple._alpha;
-				if (ripple._alpha > 100) return;
+				if (ripple._alpha > 192) return;
 				if (next_invoked) return;
 				next_invoked = true;
 				next();

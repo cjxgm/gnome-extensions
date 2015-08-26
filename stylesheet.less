@@ -1,27 +1,35 @@
 
 @radius: 200px;
-@color-on: #8f1;
-@color-off: #f81;
+@border: 2px;
+@color-on: rgb(50%, 100%, 7%);
+@color-off: rgb(100%, 50%, 7%);
+@indicator-border: @border;
 @indicator-radius: @radius * 0.07;
 
 .capslip-ripple {
 	width: @radius;
 	height: @radius*2;
-	border-radius: 0 @radius @radius 0;
+	border-radius: 0 @radius+@border @radius+@border 0;
+	border: @border solid;
+	border-left: none;
 }
 
 .capslip-on {
-	background-color: @color-on;
+	background-color: fade(@color-on, 50%);
+	border-color: darken(@color-on, 16%);
 }
 
 .capslip-off {
-	background-color: @color-off;
+	background-color: fade(@color-off, 50%);
+	border-color: darken(@color-off, 16%);
 }
 
 .capslip-indicator {
 	width: @indicator-radius;
 	height: @indicator-radius * 2;
-	border-radius: 0 @indicator-radius @indicator-radius 0;
-	background-color: @color-on;
+	border-radius: 0 @indicator-radius+@indicator-border @indicator-radius+@indicator-border 0;
+	background-color: fade(@color-on, 80%);
+	border: @indicator-border solid darken(@color-on, 16%);
+	border-left: none;
 }
 

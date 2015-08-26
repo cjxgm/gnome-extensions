@@ -28,7 +28,6 @@ function make()
 			style_class: 'capslip-indicator',
 			x: 0,
 			y: 0, 	// will be calculated later
-			opacity: 200,
 		});
 		parent.add_actor(indicator);
 
