@@ -9,3 +9,8 @@
 .capslip-off {
   background-color: #ff8811;
 }
+.capslip-indicator {
+  width: 40px;
+  height: 160px;
+  background-color: #88ff11;
+}
