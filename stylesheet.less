@@ -2,6 +2,7 @@
 @radius: 200px;
 @color-on: #8f1;
 @color-off: #f81;
+@indicator-radius: @radius * 0.07;
 
 .capslip-ripple {
 	width: @radius;
@@ -15,5 +16,12 @@
 
 .capslip-off {
 	background-color: @color-off;
+}
+
+.capslip-indicator {
+	width: @indicator-radius;
+	height: @indicator-radius * 2;
+	border-radius: 0 @indicator-radius @indicator-radius 0;
+	background-color: @color-on;
 }
 

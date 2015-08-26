@@ -1,7 +1,7 @@
 
 const keymap = imports.gi.Gdk.Keymap.get_default();
 
-function make(ripple)
+function make(ripple, indicate)
 {
 	////////
 	//////// capslip core
@@ -14,6 +14,7 @@ function make(ripple)
 		if (on == caps_lock_state) return;
 		caps_lock_state = on;
 		ripple((on ? 'capslip-on' : 'capslip-off'));
+		indicate(on);
 	}
 
 	////////
