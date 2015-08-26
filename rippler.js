@@ -39,7 +39,7 @@ function make(max_ripples)
 		}
 
 		let ripple = new ST.bin({
-			style_class: 'capslip-ripple capslip-on',
+			style_class: 'capslip-ripple',
 			pivot_point: new CLUTTER.point({ x: 0.0, y: 0.5 }),
 			x: 0,
 			y: 0, 	// will be calculated later
