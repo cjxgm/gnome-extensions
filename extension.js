@@ -1,6 +1,6 @@
 
 const EXT = imports.misc.extensionUtils.getCurrentExtension();
-const ISO_CLOCK = EXT.imports['iso-clock'];
+const make_iso_clock = EXT.imports['iso-clock'].make;
 
-function init() { return ISO_CLOCK.make_iso_clock() }
+function init() { return make_iso_clock() }
 

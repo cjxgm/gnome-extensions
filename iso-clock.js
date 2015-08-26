@@ -29,7 +29,7 @@ const ST = (function() {
 // iso clock
 //
 
-function make_iso_clock()
+function make()
 {
 	const clock_container = MAIN.panel._centerBox.get_child_at_index(0).get_child_at_index(0).get_child_at_index(0);
 	const clock_index = 1;		// TODO: find a better way instead of hard-coding this
