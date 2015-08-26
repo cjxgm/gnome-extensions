@@ -1,0 +1,9 @@
+{
+	"name": "CAPSlip",
+	"description": "Show ripples when caps-lock status changed.",
+	"uuid": "capslip@giumo.x.clanjor-cjprods.org",
+	"shell-version": [
+		"3.16"
+	]
+}
+
