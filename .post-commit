@@ -1,4 +1,0 @@
-#!/bin/sh
-make pre-commit
-git commit --amend -C @ --no-verify
-
