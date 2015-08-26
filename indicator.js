@@ -23,11 +23,18 @@ function make()
 		return actor.peek_theme_node().get_height();
 	}
 
-	let make_indicator = function(parent, next) {
+	let make_indicator = function(parent, backward, next) {
+		let alpha_init = 255;
+		let alpha_fini = 10;
+		let delay = (backward ? 0.2 : 0.4);
+		let duration = (backward ? 0.2 : 0.4);
+		if (backward) [alpha_init, alpha_fini] = [alpha_fini, alpha_init];
+
 		let indicator = new ST.bin({
 			style_class: 'capslip-indicator',
 			x: 0,
 			y: 0, 	// will be calculated later
+			opacity: alpha_init,
 		});
 		parent.add_actor(indicator);
 
@@ -35,9 +42,9 @@ function make()
 		indicator.y = (MAIN.monitor.height - get_css_height(indicator)) / 2;
 
 		tween(indicator, {
-			_alpha: 10,
-			delay: 0.4,
-			time: 0.4,
+			_alpha: alpha_fini,
+			delay: delay,
+			time: duration,
 			transition: 'easeOutQuad',
 			onUpdate: function() { indicator.opacity = indicator._alpha; },
 			onComplete: function() {
@@ -51,7 +58,9 @@ function make()
 	let indicate_request;
 
 	let do_indicate = function() {
+		let backward;
 		if (indicate_request !== undefined) {
+			backward = indicate_request;
 			indicating = indicate_request;
 			indicate_request = undefined;
 		}
@@ -60,7 +69,7 @@ function make()
 			return;
 		}
 
-		make_indicator(MAIN.ui, do_indicate);
+		make_indicator(MAIN.ui, backward, do_indicate);
 	}
 
 	let request_indicate = function(enable) {

@@ -30,30 +30,40 @@ function make(max_ripples)
 		return actor.peek_theme_node().get_height();
 	}
 
-	let make_ripple = function(parent, style, scale_init, scale_fini, next) {
+	let make_ripple = function(parent, scale_init, scale_fini, backward, next) {
+		let alpha_init = 255;
+		let alpha_fini = 0;
+		if (backward) {
+			[alpha_init, alpha_fini] = [alpha_fini, alpha_init];
+			[scale_init, scale_fini] = [scale_fini, scale_init];
+		}
+
 		let ripple = new ST.bin({
-			style_class: 'capslip-ripple ' + style,
+			style_class: 'capslip-ripple capslip-on',
 			pivot_point: new CLUTTER.point({ x: 0.0, y: 0.5 }),
 			x: 0,
 			y: 0, 	// will be calculated later
 			scale_x: scale_init,
 			scale_y: scale_init,
+			opacity: alpha_init,
 		});
 		parent.add_actor(ripple);
 
 		ripple._alpha = ripple.opacity;
+		ripple._time = 0;
 		ripple.y = (MAIN.monitor.height - get_css_height(ripple)) / 2;
 
 		let next_invoked;
 		tween(ripple, {
-			_alpha: 0,
+			_alpha: alpha_fini,
+			_time: 1,
 			scale_x: scale_fini,
 			scale_y: scale_fini,
 			time: 0.4,
 			transition: 'linear',
 			onUpdate: function() {
 				ripple.opacity = ripple._alpha;
-				if (ripple._alpha > 192) return;
+				if (ripple._time < 0.2) return;
 				if (next_invoked) return;
 				next_invoked = true;
 				next();
@@ -72,26 +82,33 @@ function make(max_ripples)
 	let ripple_request;
 
 	let do_ripple = function() {
-		if (ripple_request) {
-			rippling = {
-				style: ripple_request,
-				i: 0,
-			};
+		if (ripple_request !== undefined) {
+			if (!rippling) rippling = { i: (ripple_request ? 3 : 0) };
+			rippling.backward = ripple_request;
 			ripple_request = undefined;
 		}
-		if (rippling.i++ == max_ripples) {
-			rippling = undefined;
-			return;
+		if (rippling.backward) {
+			if (--rippling.i == 0) {
+				rippling = undefined;
+				return;
+			}
+		}
+		else {
+			if (rippling.i++ == max_ripples) {
+				rippling = undefined;
+				return;
+			}
 		}
 
 		let scale_init = lerp(rippling.i, 1, max_ripples, 0.30, 0.05);
+		if (rippling.backward) scale_init = 0.05;
 		let scale_fini = lerp(rippling.i, 1, max_ripples, 1.00, 0.50);
 
-		make_ripple(MAIN.ui, rippling.style, scale_init, scale_fini, do_ripple);
+		make_ripple(MAIN.ui, scale_init, scale_fini, rippling.backward, do_ripple);
 	}
 
-	let request_ripple = function(style) {
-		ripple_request = style;
+	let request_ripple = function(backward) {
+		ripple_request = backward;
 		if (!rippling) do_ripple();
 	}
 
