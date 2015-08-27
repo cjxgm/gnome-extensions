@@ -1,16 +1,16 @@
 .capslip-ripple {
   width: 200px;
   height: 400px;
-  border-radius: 0 202px 202px 0;
-  border: 2px solid #bf5800;
+  border-radius: 0 208px 208px 0;
+  border: 8px solid #081200;
   border-left: none;
-  background-color: rgba(255, 128, 18, 0.5);
+  background-color: rgba(128, 255, 18, 0.5);
 }
 .capslip-indicator {
   width: 14px;
   height: 28px;
-  border-radius: 0 16px 16px 0;
-  background-color: rgba(255, 128, 18, 0.8);
-  border: 2px solid #bf5800;
+  border-radius: 0 15.6px 15.6px 0;
+  background-color: rgba(128, 255, 18, 0.8);
+  border: 1.6px solid #081200;
   border-left: none;
 }
