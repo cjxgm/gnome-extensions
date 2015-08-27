@@ -1,15 +1,15 @@
 
 @radius: 200px;
-@border: 2px;
-@color: rgb(100%, 50%, 7%);
-@indicator-border: @border;
+@border: 8px;
+@color: rgb(50%, 100%, 7%);
+@indicator-border: @border / 5;
 @indicator-radius: @radius * 0.07;
 
 .capslip-ripple {
 	width: @radius;
 	height: @radius*2;
 	border-radius: 0 @radius+@border @radius+@border 0;
-	border: @border solid darken(@color, 16%);
+	border: @border solid darken(@color, 50%);
 	border-left: none;
 	background-color: fade(@color, 50%);
 }
@@ -19,7 +19,7 @@
 	height: @indicator-radius * 2;
 	border-radius: 0 @indicator-radius+@indicator-border @indicator-radius+@indicator-border 0;
 	background-color: fade(@color, 80%);
-	border: @indicator-border solid darken(@color, 16%);
+	border: @indicator-border solid darken(@color, 50%);
 	border-left: none;
 }
 
