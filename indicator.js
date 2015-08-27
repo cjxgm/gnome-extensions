@@ -24,6 +24,8 @@ function make(ripple)
 	}
 
 	let make_indicator = function(parent, next) {
+		ripple();
+
 		let indicator = new ST.bin({
 			style_class: 'capslip-indicator',
 			x: 0,
@@ -45,8 +47,6 @@ function make(ripple)
 				next();
 			},
 		});
-
-		ripple();
 	}
 
 	let indicating;
