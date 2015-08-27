@@ -2,22 +2,15 @@
   width: 200px;
   height: 400px;
   border-radius: 0 202px 202px 0;
-  border: 2px solid;
+  border: 2px solid #bf5800;
   border-left: none;
-}
-.capslip-on {
-  background-color: rgba(128, 255, 18, 0.5);
-  border-color: #58bf00;
-}
-.capslip-off {
   background-color: rgba(255, 128, 18, 0.5);
-  border-color: #bf5800;
 }
 .capslip-indicator {
   width: 14px;
   height: 28px;
   border-radius: 0 16px 16px 0;
-  background-color: rgba(128, 255, 18, 0.8);
-  border: 2px solid #58bf00;
+  background-color: rgba(255, 128, 18, 0.8);
+  border: 2px solid #bf5800;
   border-left: none;
 }

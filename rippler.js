@@ -30,9 +30,9 @@ function make(max_ripples)
 		return actor.peek_theme_node().get_height();
 	}
 
-	let make_ripple = function(parent, style, scale_init, scale_fini, next) {
+	let make_ripple = function(parent, scale_init, scale_fini, next) {
 		let ripple = new ST.bin({
-			style_class: 'capslip-ripple ' + style,
+			style_class: 'capslip-ripple',
 			pivot_point: new CLUTTER.point({ x: 0.0, y: 0.5 }),
 			x: 0,
 			y: 0, 	// will be calculated later
@@ -74,7 +74,6 @@ function make(max_ripples)
 	let do_ripple = function() {
 		if (ripple_request) {
 			rippling = {
-				style: ripple_request,
 				i: 0,
 			};
 			ripple_request = undefined;
@@ -87,11 +86,11 @@ function make(max_ripples)
 		let scale_init = lerp(rippling.i, 1, max_ripples, 0.30, 0.05);
 		let scale_fini = lerp(rippling.i, 1, max_ripples, 1.00, 0.50);
 
-		make_ripple(MAIN.ui, rippling.style, scale_init, scale_fini, do_ripple);
+		make_ripple(MAIN.ui, scale_init, scale_fini, do_ripple);
 	}
 
-	let request_ripple = function(style) {
-		ripple_request = style;
+	let request_ripple = function() {
+		ripple_request = true;
 		if (!rippling) do_ripple();
 	}
 

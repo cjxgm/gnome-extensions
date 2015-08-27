@@ -1,8 +1,7 @@
 
 @radius: 200px;
 @border: 2px;
-@color-on: rgb(50%, 100%, 7%);
-@color-off: rgb(100%, 50%, 7%);
+@color: rgb(100%, 50%, 7%);
 @indicator-border: @border;
 @indicator-radius: @radius * 0.07;
 
@@ -10,26 +9,17 @@
 	width: @radius;
 	height: @radius*2;
 	border-radius: 0 @radius+@border @radius+@border 0;
-	border: @border solid;
+	border: @border solid darken(@color, 16%);
 	border-left: none;
-}
-
-.capslip-on {
-	background-color: fade(@color-on, 50%);
-	border-color: darken(@color-on, 16%);
-}
-
-.capslip-off {
-	background-color: fade(@color-off, 50%);
-	border-color: darken(@color-off, 16%);
+	background-color: fade(@color, 50%);
 }
 
 .capslip-indicator {
 	width: @indicator-radius;
 	height: @indicator-radius * 2;
 	border-radius: 0 @indicator-radius+@indicator-border @indicator-radius+@indicator-border 0;
-	background-color: fade(@color-on, 80%);
-	border: @indicator-border solid darken(@color-on, 16%);
+	background-color: fade(@color, 80%);
+	border: @indicator-border solid darken(@color, 16%);
 	border-left: none;
 }
 

@@ -17,7 +17,7 @@ const MAIN = (function() {
 const tween = imports.ui.tweener.addTween;
 
 
-function make()
+function make(ripple)
 {
 	let get_css_height = function(actor) {
 		return actor.peek_theme_node().get_height();
@@ -45,6 +45,8 @@ function make()
 				next();
 			},
 		});
+
+		ripple();
 	}
 
 	let indicating;
