@@ -20,7 +20,7 @@ const ST = (function() {
 	let $ = {};
 	let _ = imports.gi.St;
 	$.label = _.Label;
-	$.box = _.BoxLayout;
+	$.box   = _.BoxLayout;
 	return $;
 })();
 
@@ -57,7 +57,7 @@ function make()
 
 	let update_clock = function() {
 		let _ = now();
-		label_day .text = _.day;
+		label_day .text = _.day ;
 		label_date.text = _.date;
 		label_time.text = _.time;
 		return true;
