@@ -1,0 +1,4 @@
+= iso-clock: use iso-8601 date format
+
+image::http://git.oschina.net/cjxgm/gnome-extensions/raw/iso-clock/presentation.png[]
+
