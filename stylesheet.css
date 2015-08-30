@@ -1,5 +1,10 @@
-.iso-clock {
+.iso-clock-date, .iso-clock-day {
 	font-family: Fantasque Sans Mono;
 	font-size: 16px;
+}
+
+.iso-clock-day {
+	padding-top: 1px;
+	padding-right: 4px;
 }
 
