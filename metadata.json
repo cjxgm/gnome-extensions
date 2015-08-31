@@ -1,0 +1,9 @@
+{
+	"name": "Top Fence",
+	"description": "Makes the mouse pointer harder to reach the top of the screen.",
+	"uuid": "top-fence@giumo.x.clanjor-cjprods.org",
+	"shell-version": [
+		"3.16"
+	]
+}
+
