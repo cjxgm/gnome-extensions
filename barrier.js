@@ -57,13 +57,13 @@ function make(make_singleton)
 				dy < 0 ? META.barrier_direction.yneg :
 				error("unknown error in deducing dir: dx=" + dx + " dy=" + dy));
 
-		let x = (dx ? Math.abs(dx) : 0);
-		let y = (dy ? Math.abs(dy) : 0);
+		let x = (dx ? pos : 0);
+		let y = (dy ? pos : 0);
 
 		let make_barrier = function() {
 			let geo = get_current_monitor_geometry();
-			if (dx) geo.w = 0;
-			else    geo.h = 0;
+			let w = (dx ? 0 : geo.w);
+			let h = (dy ? 0 : geo.h);
 			return new META.barrier({
 				display: global.display,
 				directions: dir,
@@ -84,7 +84,7 @@ function make(make_singleton)
 				barrier.init();
 				error("FIXME: what is the signal of mouse moving to another monitor???");
 			});
-		}, global.screen.disconnect);
+		}, function(old) { global.screen.disconnect(old) });
 
 
 		////////
