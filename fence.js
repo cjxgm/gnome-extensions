@@ -3,7 +3,7 @@
 
 const MAIN = imports.ui.main;
 
-function make(resistance, make_barrier, make_singleton)
+function make(gate_opening, gate_closing, resistance, make_barrier, make_singleton)
 {
 	////////
 	//////// debugging utils
@@ -32,16 +32,21 @@ function make(resistance, make_barrier, make_singleton)
 		let  back_barrier;
 
 		front_barrier = make_singleton(function() {
-			let crossing = 0;
+			let pressure = 0;
+			let gate_open = false;
 			return make_barrier(dx, dy, pos, function(d) {
-				crossing += d;
-				if (crossing >= resistance) {
+				if (d > gate_opening) gate_open = true;
+				if (d < gate_closing) gate_open = false;
+				if (!gate_open) return;
+				pressure += d;
+				if (pressure > resistance) {
 					 back_barrier.init();
 					front_barrier.fini();
 					on_cross();
 				}
 			}, function(d) {
-				crossing = 0;
+				pressure = 0;
+				gate_open = false;
 			});
 		}, function(old) { old() });
 
