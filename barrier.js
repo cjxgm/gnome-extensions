@@ -45,10 +45,11 @@ function make(make_singleton)
 	// (dx = 0, dy > 0): a barrier of y=pos blocking mouse coming from south.
 	// (dx = 0, dy < 0): a barrier of y=pos blocking mouse coming from north.
 	// any other (dx, dy) combination is error.
-	return function(dx, dy, pos)
-	{
+	return function(dx, dy, pos, on_hit, on_leave) {
 		if (dx == 0 && dy == 0) error("dx and dy cannot be both zero.");
 		if (dx != 0 && dy != 0) error("dx and dy cannot be both non-zero.");
+		if (!on_hit  ) on_hit   = function() {};
+		if (!on_leave) on_leave = function() {};
 
 		let dir = (
 				dx > 0 ? META.barrier_direction.xpos :
@@ -60,16 +61,23 @@ function make(make_singleton)
 		let x = (dx ? pos : 0);
 		let y = (dy ? pos : 0);
 
+		let get_distance = (dx
+				? function(e) { return Math.abs(e.dx) }
+				: function(e) { return Math.abs(e.dy) });
+
 		let make_barrier = function() {
 			let geo = get_current_monitor_geometry();
 			let w = (dx ? 0 : geo.w);
 			let h = (dy ? 0 : geo.h);
-			return new META.barrier({
+			let b = new META.barrier({
 				display: global.display,
 				directions: dir,
 				x1: x  , y1: y  ,
 				x2: x+w, y2: y+h,
 			});
+			b.connect( 'hit', function(_, ev) { on_hit  (get_distance(ev)) });
+			b.connect('left', function(_, ev) { on_leave(get_distance(ev)) });
+			return b;
 		}
 
 		////////

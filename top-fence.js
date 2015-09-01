@@ -1,14 +1,14 @@
 
 const MAIN = imports.ui.main;
 
-function make(y, threshold, make_barrier, make_singleton)
+function make(y, make_fence, make_singleton)
 {
 	////////
 	//////// debugging utils
 	////////
 
 	let log = function(msg) {
-		return;		// disable debugging
+		//return;		// disable debugging
 		MAIN.notify('[top-fence] ' + msg);
 	}
 
@@ -25,8 +25,8 @@ function make(y, threshold, make_barrier, make_singleton)
 	//////// signal handling
 	////////
 
-	let barrier = make_singleton(function() {
-		return make_barrier(0, 1, y);
+	let fence = make_singleton(function() {
+		return make_fence(0, 1, y);
 	}, function(old) { old() });
 
 
@@ -37,11 +37,11 @@ function make(y, threshold, make_barrier, make_singleton)
 	let $ = {};
 
 	$.enable = function() {
-		barrier.init();
+		fence.init();
 	}
 
 	$.disable = function() {
-		barrier.fini();
+		fence.fini();
 	}
 
 	return $;
