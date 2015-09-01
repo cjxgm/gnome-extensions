@@ -20,12 +20,12 @@ function make(make_singleton)
 	//////// debugging utils
 	////////
 
-	const log = function(msg) {
+	let log = function(msg) {
 		//return;		// disable debugging
 		MAIN.notify('[barrier] ' + msg);
 	}
 
-	const error = function(msg) {
+	let error = function(msg) {
 		MAIN.notify('[barrier] !! ' + msg);
 		throw msg;
 	}
@@ -34,7 +34,7 @@ function make(make_singleton)
 	//////// utils
 	////////
 
-	const get_current_monitor_geometry = function() {
+	let get_current_monitor_geometry = function() {
 		let mon = global.screen.get_current_monitor();
 		let geo = global.screen.get_monitor_geometry(mon);
 		return { w: geo.width, h: geo.height };
@@ -93,7 +93,6 @@ function make(make_singleton)
 				error("FIXME: what is the signal of mouse moving to another monitor???");
 			});
 		}, function(old) { global.screen.disconnect(old) });
-
 
 		////////
 		//////// public interface

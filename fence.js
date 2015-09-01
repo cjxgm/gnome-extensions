@@ -3,14 +3,14 @@
 
 const MAIN = imports.ui.main;
 
-function make(threshold, make_barrier, make_singleton)
+function make(resistance, make_barrier, make_singleton)
 {
 	////////
 	//////// debugging utils
 	////////
 
 	let log = function(msg) {
-		//return;		// disable debugging
+		return;		// disable debugging
 		MAIN.notify('[fence] ' + msg);
 	}
 
@@ -27,10 +27,6 @@ function make(threshold, make_barrier, make_singleton)
 		//////// fence core functionality
 		////////
 
-		////////
-		//////// signal handling
-		////////
-
 		let behind = false;
 		let front_barrier;
 		let  back_barrier;
@@ -39,7 +35,7 @@ function make(threshold, make_barrier, make_singleton)
 			let crossing = 0;
 			return make_barrier(dx, dy, pos, function(d) {
 				crossing += d;
-				if (crossing >= threshold) {
+				if (crossing >= resistance) {
 					 back_barrier.init();
 					front_barrier.fini();
 					on_cross();
@@ -64,7 +60,6 @@ function make(threshold, make_barrier, make_singleton)
 			front_barrier.fini();
 			 back_barrier.fini();
 		});
-
 
 		////////
 		//////// public interface

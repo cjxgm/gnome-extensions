@@ -21,14 +21,9 @@ function make(y, make_fence, make_singleton)
 	//////// top fence core functionality
 	////////
 
-	////////
-	//////// signal handling
-	////////
-
 	let fence = make_singleton(function() {
 		return make_fence(0, 1, y);
 	}, function(old) { old() });
-
 
 	////////
 	//////// public interface
