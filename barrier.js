@@ -20,14 +20,13 @@ function make(make_singleton)
 	//////// debugging utils
 	////////
 
+	let log_name = 'top-fence:barrier';
 	let log = function(msg) {
-		//return;		// disable debugging
-		MAIN.notify('[barrier] ' + msg);
+		global.log('[' + log_name + '] ' + msg);
 	}
-
 	let error = function(msg) {
-		MAIN.notify('[barrier] !! ' + msg);
-		throw msg;
+		MAIN.notify('[' + log_name + '] !! ' + msg);
+		throw '[!' + log_name + '] ' + msg;
 	}
 
 	////////

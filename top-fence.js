@@ -7,14 +7,13 @@ function make(y, make_fence, make_singleton)
 	//////// debugging utils
 	////////
 
+	let log_name = 'top-fence';
 	let log = function(msg) {
-		//return;		// disable debugging
-		MAIN.notify('[top-fence] ' + msg);
+		global.log('[' + log_name + '] ' + msg);
 	}
-
 	let error = function(msg) {
-		MAIN.notify('[top-fence] !! ' + msg);
-		throw msg;
+		MAIN.notify('[' + log_name + '] !! ' + msg);
+		throw '[!' + log_name + '] ' + msg;
 	}
 
 	////////

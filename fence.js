@@ -9,14 +9,13 @@ function make(gate_opening, gate_closing, resistance, make_barrier, make_singlet
 	//////// debugging utils
 	////////
 
+	let log_name = 'top-fence:fence';
 	let log = function(msg) {
-		return;		// disable debugging
-		MAIN.notify('[fence] ' + msg);
+		global.log('[' + log_name + '] ' + msg);
 	}
-
 	let error = function(msg) {
-		MAIN.notify('[fence] !! ' + msg);
-		throw msg;
+		MAIN.notify('[' + log_name + '] !! ' + msg);
+		throw '[!' + log_name + '] ' + msg;
 	}
 
 	return function(dx, dy, pos, on_cross, on_leave) {
