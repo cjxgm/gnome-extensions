@@ -1,4 +1,4 @@
-// fence: an crossable barrier that stops mouse from moving over it,
+// fence: a crossable barrier that stops mouse from moving over it,
 //        but let it go when it pushes so hard.
 
 const MAIN = imports.ui.main;
