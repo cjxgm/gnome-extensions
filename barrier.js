@@ -33,10 +33,16 @@ function make(make_singleton)
 	//////// utils
 	////////
 
+	// XXX: dirty hack
 	let get_current_monitor_geometry = function() {
-		let mon = global.screen.get_current_monitor();
-		let geo = global.screen.get_monitor_geometry(mon);
-		return { w: geo.width, h: geo.height };
+		let nmon = global.screen.get_n_monitors();
+		let w = 0, h = 0;
+		for (let i=0; i<nmon; i++) {
+			let geo = global.screen.get_monitor_geometry(i);
+			w += geo.width;
+			h += geo.height;
+		}
+		return { w: w, h: h };
 	}
 
 	// (dx > 0, dy = 0): a barrier of x=pos blocking mouse coming from east.
@@ -85,11 +91,9 @@ function make(make_singleton)
 
 		let barrier = make_singleton(make_barrier, function(old) { old.destroy() });
 
-		// FIXME: what is the signal of mouse moving to another monitor???
 		let monitors_changed = make_singleton(function() {
 			return global.screen.connect('monitors-changed', function() {
 				barrier.init();
-				error("FIXME: what is the signal of mouse moving to another monitor???");
 			});
 		}, function(old) { global.screen.disconnect(old) });
 
