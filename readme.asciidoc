@@ -1,0 +1,4 @@
+= aircrash: disable software airplane-mode when it is turned on
+
+image::http://git.oschina.net/cjxgm/gnome-extensions/raw/aircrash/presentation.gif[]
+
