@@ -1,9 +1,9 @@
 {
-	"name": "Aircrash",
-	"description": "Fuck airplane-mode off permanently.",
-	"uuid": "aircrash@giumo.x.clanjor-cjprods.org",
-	"shell-version": [
-		"3.18"
-	]
+    "name": "Aircrash",
+    "description": "Fuck airplane-mode off permanently.",
+    "uuid": "aircrash@giumo.x.clanjor-cjprods.org",
+    "shell-version": [
+        "3.18"
+    ]
 }
 

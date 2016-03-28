@@ -16,36 +16,36 @@ function make(make_singleton)
 {
     let manager = RFKILL.getRfkillManager();
 
-	////////
-	//////// core
-	////////
+    ////////
+    //////// core
+    ////////
 
     let disable_airplane_mode = function() {
         manager.airplaneMode = false;
     }
 
-	////////
-	//////// signal handling
-	////////
+    ////////
+    //////// signal handling
+    ////////
 
     let airplane_mode_changed_lsnr = make_singleton(function() {
         manager.connect('airplane-mode-changed', disable_airplane_mode);
     }, function(old) { manager.disconnect(old) });
 
-	////////
-	//////// public interface
-	////////
+    ////////
+    //////// public interface
+    ////////
 
-	let $ = {};
+    let $ = {};
 
-	$.enable = function() {
+    $.enable = function() {
         airplane_mode_changed_lsnr.init();
-	}
+    }
 
-	$.disable = function() {
+    $.disable = function() {
         airplane_mode_changed_lsnr.fini();
-	}
+    }
 
-	return $;
+    return $;
 }
 
