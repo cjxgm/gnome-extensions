@@ -21,7 +21,8 @@ function make(make_singleton)
     ////////
 
     let disable_airplane_mode = function() {
-        manager.airplaneMode = false;
+        if (manager.airplaneMode)
+            manager.airplaneMode = false;
     }
 
     ////////
