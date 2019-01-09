@@ -3,6 +3,12 @@
 	"description": "Makes the mouse pointer harder to reach the top of the screen.",
 	"uuid": "top-fence@giumo.x.clanjor-cjprods.org",
 	"shell-version": [
+		"3.30",
+		"3.28",
+		"3.26",
+		"3.24",
+		"3.22",
+		"3.20",
 		"3.18"
 	]
 }
