@@ -11,8 +11,10 @@ const META = (function() {
 		ypos: _.BarrierDirection.POSITIVE_Y,
 		yneg: _.BarrierDirection.NEGATIVE_Y,
 	};
+	$.monitor_manager = global.screen || _.MonitorManager.get()
 	return $;
 })();
+const SCREEN = global.screen || global.display;
 
 function make(make_singleton)
 {
@@ -35,10 +37,10 @@ function make(make_singleton)
 
 	// XXX: dirty hack
 	let get_current_monitor_geometry = function() {
-		let nmon = global.screen.get_n_monitors();
+		let nmon = SCREEN.get_n_monitors();
 		let w = 0, h = 0;
 		for (let i=0; i<nmon; i++) {
-			let geo = global.screen.get_monitor_geometry(i);
+			let geo = SCREEN.get_monitor_geometry(i);
 			w += geo.width;
 			h += geo.height;
 		}
@@ -92,10 +94,10 @@ function make(make_singleton)
 		let barrier = make_singleton(make_barrier, function(old) { old.destroy() });
 
 		let monitors_changed = make_singleton(function() {
-			return global.screen.connect('monitors-changed', function() {
+			return META.monitor_manager.connect('monitors-changed', function() {
 				barrier.init();
 			});
-		}, function(old) { global.screen.disconnect(old) });
+		}, function(old) { META.monitor_manager.disconnect(old) });
 
 		////////
 		//////// public interface
