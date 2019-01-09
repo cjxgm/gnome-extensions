@@ -3,6 +3,12 @@
 	"description": "Replaces the default clock with the ISO-8601 comforming one.",
 	"uuid": "iso-clock@giumo.x.clanjor-cjprods.org",
 	"shell-version": [
+		"3.30",
+		"3.28",
+		"3.26",
+		"3.24",
+		"3.22",
+		"3.20",
 		"3.18"
 	]
 }
