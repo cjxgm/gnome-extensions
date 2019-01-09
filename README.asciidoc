@@ -1,0 +1,18 @@
+== `gnome extensions`
+
+GNOME Shell Extensions that I made or maintained.
+
+Different branch for different extension.
+
+=== ATTENTION
+
+All the extensions are designed specifically FOR MYSELF. That's why there
+are no prefs settings in there. I just made my preference into the code.
+
+They are only guaranteed to work on my system, which runs Arch Linux, thus
+having the latest version of GNOME Shell.
+
+=== How to Install
+
+TODO
+
