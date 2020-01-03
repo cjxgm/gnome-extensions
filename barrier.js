@@ -74,6 +74,12 @@ function make(make_singleton)
 
 		let make_barrier = function() {
 			let geo = get_current_monitor_geometry();
+			if (geo.w == 0) {
+				return {
+					destroy: function() {},
+				};
+			}
+
 			let w = (dx ? 0 : geo.w);
 			let h = (dy ? 0 : geo.h);
 			let b = new META.barrier({
